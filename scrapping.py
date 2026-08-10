@@ -3,7 +3,7 @@ from urllib.parse import urljoin
 from wsgiref import headers
 
 from bs4 import BeautifulSoup
-import csv
+import csv   
 import requests
 from flask import Flask, json, jsonify,render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy 
