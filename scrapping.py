@@ -235,12 +235,26 @@ import os
 #             break
 #         else:
 #             print("Invalid choice")
-if __name__ == "__main__":
+# if __name__ == "__main__":
+#     with app.app_context():
+#         if Books.query.count() == 0:
+#             data_list = []
+#             for page in range(1, 10):  # Assuming there are 50 pages to scrape
+#                 data_list.extend(scrape_page(page))
+#             store_in_db(data_list)
+
+#     app.run(debug=True)
+def initialize_database():
     with app.app_context():
+        db.create_all()
+
         if Books.query.count() == 0:
             data_list = []
-            for page in range(1, 10):  # Assuming there are 50 pages to scrape
+
+            for page in range(1, 10):
                 data_list.extend(scrape_page(page))
+
             store_in_db(data_list)
 
-    app.run(debug=True)
+
+initialize_database()
